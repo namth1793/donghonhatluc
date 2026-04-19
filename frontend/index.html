@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm Sửa Đồng Hồ Nhất Lục - Tân Bình, TP.HCM</title>
+    <meta name="description" content="Tiệm sửa đồng hồ Nhất Lục tại Quận Tân Bình, TP.HCM. Chuyên sửa chữa, bảo dưỡng đồng hồ uy tín 20 năm, linh kiện chính hãng, giá hợp lý.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --pink-50:  #FFF0F0;
+            --pink-100: #FFD6D6;
+            --pink-200: #FFAAAA;
+            --pink-300: #FF7070;
+            --pink-400: #E03030;
+            --pink-500: #BD0100;
+            --pink-600: #8E0000;
+            --white:    #FFFFFF;
+            --gray-50:  #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --text-dark:   #1A1A1A;
+            --text-medium: #555555;
+            --text-light:  #888888;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+        }
+
+        img { max-width: 100%; display: block; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding { padding: 88px 0; }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+        .section-title span { color: var(--pink-500); }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink-400), var(--pink-300));
+            border-radius: 2px;
+            margin-bottom: 24px;
+        }
+
+        /* ── NAVBAR ── */
+        #navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 22px 0;
+            transition: var(--transition);
+        }
+        #navbar.scrolled {
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px);
+            padding: 14px 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .nav-logo img {
+            height: 48px;
+            width: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: var(--transition);
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+        }
+        #navbar.scrolled .nav-logo img {
+            border-color: var(--pink-200);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 4px;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.92);
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 100px;
+            transition: var(--transition);
+        }
+        .nav-menu a:hover { background: rgba(255,255,255,0.18); }
+        #navbar.scrolled .nav-menu a { color: var(--text-medium); }
+        #navbar.scrolled .nav-menu a:hover {
+            background: var(--pink-100);
+            color: var(--pink-600);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        #navbar.scrolled .nav-hamburger span { background: var(--text-dark); }
+
+        /* ── MOBILE MENU ── */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 36px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .mobile-menu a:hover { color: var(--pink-500); }
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px; right: 24px;
+            background: none; border: none;
+            font-size: 1.5rem;
+            color: var(--text-medium);
+            cursor: pointer;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            height: 100vh;
+            min-height: 620px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            transition: transform 8s ease;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(20,0,10,0.50) 0%,
+                rgba(20,0,10,0.38) 50%,
+                rgba(20,0,10,0.60) 100%
+            );
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            padding: 0 24px;
+            animation: fadeInUp 1s ease 0.25s both;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.14);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.28);
+            color: var(--white);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 22px;
+            border-radius: 100px;
+            margin-bottom: 26px;
+        }
+        .hero-title {
+            font-size: clamp(1.9rem, 5vw, 3.4rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.35rem);
+            color: rgba(255,255,255,0.88);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 44px;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--pink-400), var(--pink-500));
+            color: var(--white);
+            text-decoration: none;
+            padding: 15px 36px;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 6px 24px rgba(232,90,133,0.45);
+            transition: var(--transition);
+        }
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(232,90,133,0.55);
+        }
+        .hero-scroll {
+            position: absolute;
+            bottom: 34px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            color: rgba(255,255,255,0.65);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bounce 2.2s infinite;
+        }
+
+        /* ── GIỚI THIỆU ── */
+        #gioi-thieu { background: var(--white); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .about-desc {
+            color: var(--text-medium);
+            font-size: 0.97rem;
+            line-height: 1.85;
+            margin-bottom: 24px;
+        }
+        .about-stats {
+            display: flex;
+            gap: 36px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--pink-500);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+        .about-logo-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-lg);
+            aspect-ratio: 1;
+            max-width: 400px;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .about-logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            transition: transform 0.5s ease;
+        }
+        .about-logo-box:hover img {
+            transform: scale(1.04);
+        }
+
+        /* ── DỊCH VỤ ── */
+        #dich-vu { background: var(--pink-50); }
+        .services-header {
+            text-align: center;
+            margin-bottom: 52px;
+        }
+        .services-header .section-divider { margin: 0 auto 24px; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-card:hover .service-img-wrap img { transform: scale(1.07); }
+
+        .service-img-wrap {
+            height: 200px;
+            overflow: hidden;
+        }
+        .service-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .service-body { padding: 24px 22px; }
+        .service-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+        }
+        .service-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .service-bullets li {
+            font-size: 0.84rem;
+            color: var(--text-medium);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.5;
+        }
+        .service-bullets li::before {
+            content: '✦';
+            color: var(--pink-400);
+            font-size: 0.6rem;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        /* ── TẠI SAO CHỌN ── */
+        #tai-sao { background: var(--white); }
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .why-image-wrap {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            aspect-ratio: 4/5;
+            position: relative;
+        }
+        .why-image { width: 100%; height: 100%; object-fit: cover; }
+        .why-image-fallback {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--pink-100), var(--pink-300));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+        .why-image-badge {
+            position: absolute;
+            bottom: 24px; left: 24px;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .why-image-badge i { font-size: 1.9rem; color: #F59E0B; }
+        .why-image-badge strong { display: block; font-size: 1.2rem; font-weight: 700; color: var(--text-dark); }
+        .why-image-badge span { font-size: 0.78rem; color: var(--text-light); }
+
+        .why-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 18px 20px;
+            background: var(--gray-50);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid transparent;
+            transition: var(--transition);
+        }
+        .why-item:hover {
+            background: var(--pink-50);
+            border-left-color: var(--pink-400);
+        }
+        .why-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--pink-100), var(--pink-200));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .why-icon i { color: var(--pink-500); font-size: 1.05rem; }
+        .why-text strong { display: block; font-size: 0.93rem; font-weight: 600; color: var(--text-dark); margin-bottom: 3px; }
+        .why-text p { font-size: 0.84rem; color: var(--text-medium); line-height: 1.55; }
+
+        /* ── LIÊN HỆ ── */
+        #lien-he { background: var(--pink-50); }
+        .contact-header { text-align: center; margin-bottom: 52px; }
+        .contact-header .section-divider { margin: 0 auto 24px; }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 32px;
+            align-items: start;
+        }
+        .contact-info {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+        }
+        .contact-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--pink-100);
+        }
+        .contact-item { display: flex; gap: 16px; margin-bottom: 26px; align-items: flex-start; }
+        .contact-icon {
+            width: 46px; height: 46px;
+            background: linear-gradient(135deg, var(--pink-100), var(--pink-200));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .contact-icon i { color: var(--pink-500); font-size: 1.05rem; }
+        .contact-detail strong {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .contact-detail p, .contact-detail a {
+            font-size: 0.94rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            line-height: 1.65;
+        }
+        .contact-detail a:hover { color: var(--pink-500); }
+
+        .contact-hours { display: flex; flex-direction: column; gap: 6px; }
+        .hour-row { display: flex; justify-content: space-between; gap: 12px; font-size: 0.9rem; }
+        .hour-row .day { color: var(--text-medium); }
+        .hour-row .time { font-weight: 600; color: var(--text-dark); }
+
+        .map-wrap {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            min-height: 420px;
+        }
+        .map-wrap iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 420px;
+            border: none;
+            display: block;
+        }
+
+        /* ── FOOTER ── */
+        #footer {
+            background: linear-gradient(135deg, #1A0000, #2D0000);
+            color: rgba(255,255,255,0.65);
+            padding: 48px 0 24px;
+        }
+        .footer-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-bottom: 36px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 24px;
+        }
+        .footer-brand { max-width: 280px; }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--pink-300);
+            margin-bottom: 12px;
+        }
+        .footer-desc { font-size: 0.84rem; line-height: 1.75; }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 0.87rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 18px;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+        }
+        .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.58);
+            font-size: 0.84rem;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            transition: var(--transition);
+        }
+        .footer-links a::before { content: '→'; color: var(--pink-400); font-size: 0.72rem; }
+        .footer-links a:hover { color: var(--pink-300); padding-left: 4px; }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.84rem;
+        }
+        .footer-contact-item i { color: var(--pink-400); width: 16px; margin-top: 2px; flex-shrink: 0; }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.35);
+        }
+        .footer-bottom span { color: var(--pink-400); }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(32px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(-9px); }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .section-padding { padding: 60px 0; }
+            .section-title { font-size: 1.6rem; }
+            .nav-menu { display: none; }
+            .nav-hamburger { display: flex; }
+            .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-logo-box { aspect-ratio: auto; padding: 40px 30px; max-width: 100%; }
+            .why-image-wrap { aspect-ratio: 16/9; }
+            .services-grid { grid-template-columns: 1fr; }
+            .about-stats { gap: 24px; }
+            .footer-main { flex-direction: column; gap: 32px; }
+            .footer-brand { max-width: 100%; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .section-padding { padding: 48px 0; }
+            .hero-title { font-size: 1.7rem; }
+            .contact-info { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">
+        <i class="fas fa-times"></i>
+    </button>
+    <a href="#" onclick="closeMobileMenu()">Trang chủ</a>
+    <a href="#gioi-thieu" onclick="closeMobileMenu()">Giới thiệu</a>
+    <a href="#dich-vu" onclick="closeMobileMenu()">Dịch vụ</a>
+    <a href="#lien-he" onclick="closeMobileMenu()">Liên hệ</a>
+</div>
+
+<!-- Navbar -->
+<nav id="navbar">
+    <div class="container">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="logo.jpg" alt="Logo Tiệm Sửa Đồng Hồ Nhất Lực">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                <li><a href="#dich-vu">Dịch vụ</a></li>
+                <li><a href="#lien-he">Liên hệ</a></li>
+            </ul>
+            <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Mở menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-content">
+        <div class="hero-badge">⌚ Chuyên sửa chữa đồng hồ</div>
+        <h1 class="hero-title">Tiệm Sửa Đồng Hồ Nhất Lục</h1>
+        <p class="hero-subtitle">Uy Tín và Chuyên Nghiệp</p>
+        <a href="#lien-he" class="hero-cta">
+            <i class="fas fa-phone"></i>
+            Liên hệ ngay
+        </a>
+    </div>
+    <div class="hero-scroll">
+        <span>Cuộn xuống</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- Giới Thiệu -->
+<section id="gioi-thieu" class="section-padding">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text fade-in">
+                <div class="section-divider"></div>
+                <h2 class="section-title">
+                    Chuyên sửa chữa và bảo dưỡng<br>
+                    <span>đồng hồ tại TP. Hồ Chí Minh</span>
+                </h2>
+                <p class="about-desc">
+                    Với hơn <strong>20 năm kinh nghiệm</strong> trong nghề, tiệm sửa đồng hồ Nhất Lục tại Quận Tân Bình đã trở thành địa chỉ tin cậy của hàng nghìn khách hàng. Chúng tôi tự hào với đội ngũ kỹ thuật viên tay nghề cao, được đào tạo bài bản, am hiểu sâu về cơ cấu đồng hồ từ các dòng phổ thông đến cao cấp.
+                </p>
+                <p class="about-desc">
+                    Mỗi chiếc đồng hồ không chỉ là dụng cụ đo thời gian mà còn là kỷ niệm quý giá. Chúng tôi cam kết mang lại dịch vụ hoàn hảo nhất với linh kiện chính hãng, quy trình chuẩn xác và giá cả minh bạch.
+                </p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Năm kinh nghiệm</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5K+</div>
+                        <div class="stat-label">Khách hài lòng</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Linh kiện chính hãng</div>
+                    </div>
+                </div>
+            </div>
+            <div class="fade-in">
+                <div class="about-logo-box">
+                    <img src="logo.jpg" alt="Logo Tiệm Sửa Đồng Hồ Nhất Lực">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dịch Vụ -->
+<section id="dich-vu" class="section-padding">
+    <div class="container">
+        <div class="services-header fade-in">
+            <div class="section-divider"></div>
+            <h2 class="section-title">Dịch Vụ Nổi Bật<br>của <span>Tiệm Nhất Lục</span></h2>
+            <p style="color:var(--text-medium);max-width:540px;margin:0 auto;font-size:0.94rem;line-height:1.7;">
+                Đầy đủ các dịch vụ sửa chữa và bảo dưỡng đồng hồ với kỹ thuật cao, linh kiện chính hãng và cam kết bảo hành rõ ràng.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-img-wrap">
+                    <img src="assets/thay_pin.png" alt="Thay Pin Đồng Hồ">
+                </div>
+                <div class="service-body">
+                    <h3 class="service-name">Thay Pin Đồng Hồ</h3>
+                    <ul class="service-bullets">
+                        <li>Pin chính hãng, tuổi thọ đảm bảo 2–5 năm</li>
+                        <li>Thay nhanh ngay tại chỗ, chỉ 5–10 phút</li>
+                        <li>Tương thích mọi hãng: Casio, Seiko, Citizen…</li>
+                        <li>Kiểm tra chống nước sau khi thay</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-img-wrap">
+                    <img src="assets/đồng_hồ_vào_nước.png" alt="Sửa Đồng Hồ Bị Vô Nước">
+                </div>
+                <div class="service-body">
+                    <h3 class="service-name">Sửa Đồng Hồ Bị Vô Nước</h3>
+                    <ul class="service-bullets">
+                        <li>Tháo máy, làm khô và vệ sinh hoàn toàn</li>
+                        <li>Thay gioăng cao su chống thấm mới</li>
+                        <li>Kiểm tra áp suất sau xử lý chuyên sâu</li>
+                        <li>Bảo hành 6 tháng chống nước</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-img-wrap">
+                    <img src="assets/đồng hồ đứng máy.png" alt="Sửa Đồng Hồ Đứng Máy">
+                </div>
+                <div class="service-body">
+                    <h3 class="service-name">Sửa Đồng Hồ Đứng Máy</h3>
+                    <ul class="service-bullets">
+                        <li>Chẩn đoán chính xác nguyên nhân đứng máy</li>
+                        <li>Thay thế linh kiện hỏng hóc chính hãng</li>
+                        <li>Điều chỉnh, căn chỉnh bộ máy cẩn thận</li>
+                        <li>Bảo hành 12 tháng sau sửa chữa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-img-wrap">
+                    <img src="assets/thay_mặt_kính.png" alt="Thay Mặt Kính Đồng Hồ">
+                </div>
+                <div class="service-body">
+                    <h3 class="service-name">Thay Mặt Kính Đồng Hồ</h3>
+                    <ul class="service-bullets">
+                        <li>Kính sapphire, mineral glass, kính cường lực</li>
+                        <li>Cắt kính theo kích thước đặc chủng</li>
+                        <li>Đảm bảo kín khít, chống bụi và chống nước</li>
+                        <li>Mặt kính sáng trong, không bị ố vàng</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-img-wrap">
+                    <img src="assets/lau_dầu.png" alt="Lau Dầu Đồng Hồ">
+                </div>
+                <div class="service-body">
+                    <h3 class="service-name">Lau Dầu Đồng Hồ</h3>
+                    <ul class="service-bullets">
+                        <li>Tháo hoàn toàn, vệ sinh từng chi tiết nhỏ</li>
+                        <li>Bôi trơn dầu chuyên dụng cho đồng hồ</li>
+                        <li>Tăng độ chính xác và tuổi thọ bộ máy</li>
+                        <li>Khuyến nghị lau dầu định kỳ 3–5 năm/lần</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-img-wrap">
+                    <img src="assets/chỉnh_sai_số.png" alt="Chỉnh Sai Số Đồng Hồ">
+                </div>
+                <div class="service-body">
+                    <h3 class="service-name">Chỉnh Sai Số Đồng Hồ</h3>
+                    <ul class="service-bullets">
+                        <li>Đo sai số bằng thiết bị chuyên dụng</li>
+                        <li>Điều chỉnh tốc độ dao động của bộ máy</li>
+                        <li>Đạt chuẩn sai số &lt;10 giây/ngày</li>
+                        <li>Áp dụng cho cả đồng hồ cơ và điện tử</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tại Sao Chọn -->
+<section id="tai-sao" class="section-padding">
+    <div class="container">
+        <div class="why-grid">
+            <div class="why-image-wrap fade-in">
+                <img
+                    src="assets/store.jpg"
+                    alt="Tiệm Sửa Đồng Hồ Nhất Lục"
+                    class="why-image"
+                >
+                <div class="why-image-badge">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <strong>5.0 ★</strong>
+                        <span>Đánh giá trung bình</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-content fade-in">
+                <div class="section-divider"></div>
+                <h2 class="section-title">
+                    Tại Sao Nên Chọn<br>
+                    <span>Tiệm Sửa Đồng Hồ Nhất Lục?</span>
+                </h2>
+
+                <ul class="why-list">
+                    <li class="why-item">
+                        <div class="why-icon"><i class="fas fa-star"></i></div>
+                        <div class="why-text">
+                            <strong>Uy tín 5 sao được công nhận</strong>
+                            <p>Hàng nghìn đánh giá tích cực từ khách hàng, xếp hạng 5 sao liên tục trên Google Maps và các nền tảng đánh giá uy tín.</p>
+                        </div>
+                    </li>
+                    <li class="why-item">
+                        <div class="why-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="why-text">
+                            <strong>Linh kiện chính hãng 100%</strong>
+                            <p>Chỉ sử dụng linh kiện có nguồn gốc rõ ràng, đảm bảo chất lượng và độ bền lâu dài cho đồng hồ của bạn.</p>
+                        </div>
+                    </li>
+                    <li class="why-item">
+                        <div class="why-icon"><i class="fas fa-tag"></i></div>
+                        <div class="why-text">
+                            <strong>Giá hợp lý, minh bạch</strong>
+                            <p>Báo giá rõ ràng trước khi thực hiện, không phát sinh chi phí ẩn. Giá cả cạnh tranh so với thị trường.</p>
+                        </div>
+                    </li>
+                    <li class="why-item">
+                        <div class="why-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="why-text">
+                            <strong>Thực hiện nhanh, lấy ngay</strong>
+                            <p>Nhiều dịch vụ hoàn thành trong ngày hoặc chỉ vài phút. Không cần chờ lâu, tiết kiệm thời gian của bạn.</p>
+                        </div>
+                    </li>
+                    <li class="why-item">
+                        <div class="why-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="why-text">
+                            <strong>Địa chỉ rõ ràng, dễ tìm</strong>
+                            <p>Tọa lạc ngay trung tâm Quận Tân Bình, dễ tìm kiếm trên bản đồ. Có chỗ để xe thuận tiện.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Liên Hệ & Bản Đồ -->
+<section id="lien-he" class="section-padding">
+    <div class="container">
+        <div class="contact-header fade-in">
+            <div class="section-divider"></div>
+            <h2 class="section-title">Liên Hệ <span>Với Chúng Tôi</span></h2>
+            <p style="color:var(--text-medium);font-size:0.94rem;">
+                Ghé thăm hoặc liên hệ để được tư vấn và báo giá miễn phí
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3>Thông tin liên hệ</h3>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-detail">
+                        <strong>Địa chỉ</strong>
+                        <p>Số 25 Thăng Long, Tân Sơn Nhất,<br>TP. Hồ Chí Minh</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-detail">
+                        <strong>Hotline</strong>
+                        <a href="tel:0935190766">0935 190 766</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-detail">
+                        <strong>Giờ làm việc</strong>
+                        <div class="contact-hours">
+                            <div class="hour-row">
+                                <span class="day">Thứ Hai – Thứ Sáu</span>
+                                <span class="time">8:00 – 19:00</span>
+                            </div>
+                            <div class="hour-row">
+                                <span class="day">Thứ Bảy</span>
+                                <span class="time">8:00 – 18:00</span>
+                            </div>
+                            <div class="hour-row">
+                                <span class="day">Chủ Nhật</span>
+                                <span class="time">9:00 – 17:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-wrap fade-in">
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=106.6380%2C10.7870%2C106.6660%2C10.8080&layer=mapnik&marker=10.7975%2C106.6520"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Bản đồ Tiệm Sửa Đồng Hồ Nhất Lục - Tân Bình">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <div class="footer-logo">⌚ Tiệm Sửa Đồng Hồ Nhất Lục</div>
+                <p class="footer-desc">
+                    Chuyên sửa chữa và bảo dưỡng đồng hồ tại Quận Tân Bình, TP.HCM. Uy tín 20 năm, linh kiện chính hãng, giá hợp lý, phục vụ tận tâm.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Điều hướng</h4>
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                    <li><a href="#dich-vu">Dịch vụ</a></li>
+                    <li><a href="#lien-he">Liên hệ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Dịch vụ</h4>
+                <ul>
+                    <li><a href="#dich-vu">Thay pin đồng hồ</a></li>
+                    <li><a href="#dich-vu">Sửa đồng hồ vô nước</a></li>
+                    <li><a href="#dich-vu">Sửa đồng hồ đứng máy</a></li>
+                    <li><a href="#dich-vu">Thay mặt kính</a></li>
+                    <li><a href="#dich-vu">Lau dầu, bảo dưỡng</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Liên hệ</h4>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Số 25 Thăng Long, Tân Sơn Nhất, TP.HCM</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0935 190 766</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Thứ 2 – Thứ 6: 8:00 – 19:00</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Thứ 7 – CN: 8:00 – 17:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 <span>Tiệm Sửa Đồng Hồ Nhất Lục</span> — Quận Tân Bình, TP. Hồ Chí Minh. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const navbar  = document.getElementById('navbar');
+    const heroBg  = document.getElementById('heroBg');
+
+    // Navbar: transparent → solid on scroll
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+        // Subtle parallax on hero bg
+        if (window.scrollY < window.innerHeight) {
+            heroBg.style.transform = `scale(1.05) translateY(${window.scrollY * 0.25}px)`;
+        }
+    });
+
+    // Fade-in on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Hero BG zoom-out on load
+    window.addEventListener('load', () => {
+        heroBg.style.transition = 'transform 1.2s ease';
+        heroBg.style.transform  = 'scale(1.02) translateY(0)';
+    });
+
+    // Mobile menu
+    function openMobileMenu() {
+        document.getElementById('mobileMenu').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    // Close mobile menu on ESC
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+
+</body>
+</html>
